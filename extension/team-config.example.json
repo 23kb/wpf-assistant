@@ -1,0 +1,5 @@
+{
+  "worker_url": "https://YOUR-WORKER-SUBDOMAIN.workers.dev",
+  "bearer_token": "PASTE_BEARER_TOKEN_HERE",
+  "model": "claude-sonnet-4-6"
+}

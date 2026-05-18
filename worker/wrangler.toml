@@ -1,0 +1,15 @@
+name = "wpforms-assistant"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# KV namespace for caching the slug index + doc bodies.
+# Create with:  npx wrangler kv:namespace create CACHE
+# Then paste the id wrangler prints into the line below.
+[[kv_namespaces]]
+binding = "CACHE"
+id = "YOUR_KV_NAMESPACE_ID"
+
+# Secrets — set with `wrangler secret put NAME`, never committed:
+#   ANTHROPIC_API_KEY        — copy from .env (anthropic_key=...)
+#   EXTENSION_BEARER_TOKEN   — random string, must match the value
+#                              pasted into the extension's Options page

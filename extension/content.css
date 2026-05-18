@@ -1,0 +1,421 @@
+
+
+#nudge-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+#nudge-root * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+}
+
+.nudge-input-box {
+  position: fixed;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 16px 18px;
+  width: 520px;
+  max-width: calc(100vw - 40px);
+  pointer-events: auto;
+  animation: nudge-pop 160ms ease-out;
+}
+
+.nudge-hint {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.nudge-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nudge-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  padding: 6px 4px;
+  background: transparent;
+  color: #111;
+}
+
+.nudge-mic {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nudge-mic:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.nudge-mic-recording {
+  background: #fee2e2 !important;
+  border-color: #ef4444 !important;
+  animation: nudge-pulse-red 1s infinite;
+}
+
+@keyframes nudge-pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+}
+
+.nudge-thinking {
+  position: fixed;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 999px;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.14),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
+  padding: 8px 8px 8px 14px;
+  font-size: 14px;
+  color: #2c2f33;
+  pointer-events: auto;
+  animation: nudge-bubble-pop 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.nudge-thinking-brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nudge-sullie {
+  
+  width: 30px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.nudge-thinking-text {
+  min-width: 140px;
+  display: inline-block;
+}
+
+.nudge-thinking-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.nudge-thinking-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-top-color: #7A30E2;
+  border-radius: 50%;
+  animation: nudge-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.nudge-thinking-text {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  color: #2c2f33;
+}
+
+.nudge-thinking .nudge-btn-stop {
+  background: rgba(0, 0, 0, 0.04);
+  color: #6b7280;
+  border: none;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.nudge-thinking .nudge-btn-stop:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #111;
+}
+
+@keyframes nudge-spin {
+  to { transform: rotate(360deg); }
+}
+
+.nudge-bubble {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 12px 36px rgba(37, 99, 235, 0.14),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  padding: 14px 16px 12px;
+  pointer-events: auto;
+  z-index: 2147483647;
+  animation: nudge-bubble-pop 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  padding-top: 30px;
+}
+
+.nudge-bubble-msg {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #1f2937;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.nudge-bubble-msg strong,
+.nudge-bubble-msg b {
+  font-weight: 600;
+  color: #111;
+}
+
+.nudge-bubble-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nudge-btn {
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+
+.nudge-btn:hover {
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.nudge-btn:active {
+  transform: translateY(1px);
+}
+
+.nudge-bubble .nudge-btn-close,
+.nudge-bubble .nudge-btn-refresh {
+  position: absolute;
+  top: 6px;
+  background: transparent;
+  color: #9ca3af;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.nudge-bubble .nudge-btn-close { left: 6px; }
+.nudge-bubble .nudge-btn-refresh { right: 6px; }
+
+.nudge-bubble .nudge-btn-close:hover,
+.nudge-bubble .nudge-btn-refresh:hover {
+  background: #f3f4f6;
+  color: #111;
+}
+
+.nudge-bubble .nudge-btn-refresh:hover {
+  color: #2563eb;
+}
+
+.nudge-btn-secondary {
+  background: white;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+
+.nudge-btn-secondary:hover {
+  background: #f9fafb;
+  color: #111;
+  border-color: #d1d5db;
+}
+
+.nudge-highlight {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.18) !important;
+  transition: outline 160ms ease, box-shadow 160ms ease;
+  border-radius: 4px;
+}
+
+.nudge-action-label {
+  position: absolute;
+  z-index: 2147483647;
+  background: #2563eb;
+  color: #fff;
+  font: 700 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0.02em;
+  padding: 7px 11px;
+  border-radius: 7px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  animation: nudge-bubble-pop 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nudge-summary, .nudge-error {
+  position: fixed;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  width: 480px;
+  max-width: calc(100vw - 40px);
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  animation: nudge-pop 160ms ease-out;
+}
+
+.nudge-summary-msg, .nudge-error-msg {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111;
+}
+
+.nudge-summary-msg {
+  max-height: 62vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.nudge-summary-msg p {
+  margin: 0 0 10px;
+}
+
+.nudge-summary-msg p:last-child {
+  margin-bottom: 0;
+}
+
+.nudge-summary-msg ul,
+.nudge-summary-msg ol {
+  margin: 0 0 10px;
+  padding-left: 22px;
+}
+
+.nudge-summary-msg li {
+  margin: 3px 0;
+}
+
+.nudge-summary-msg strong {
+  font-weight: 650;
+  color: #0b0b0b;
+}
+
+.nudge-summary-msg .nudge-note {
+  margin: 12px 0 0;
+  padding: 9px 12px;
+  background: #eff6ff;
+  border-left: 3px solid #2563eb;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #1e3a5f;
+}
+
+.nudge-error {
+  border: 1px solid #fca5a5;
+}
+
+.nudge-error-msg {
+  color: #b91c1c;
+}
+
+.nudge-cursor {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 2147483646;
+  filter:
+    drop-shadow(0 4px 10px rgba(59, 130, 246, 0.35))
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+  animation: nudge-cursor-appear 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes nudge-cursor-appear {
+  from { opacity: 0; transform: scale(0.4) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.nudge-cursor-arrived {
+  animation: nudge-cursor-bounce 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes nudge-cursor-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+
+@keyframes nudge-pop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.nudge-bubble {
+  animation-name: nudge-bubble-pop;
+}
+
+@keyframes nudge-bubble-pop {
+  0% { opacity: 0; transform: scale(0.85) translateY(4px); }
+  60% { opacity: 1; transform: scale(1.03) translateY(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes nudge-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}

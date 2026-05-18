@@ -1,0 +1,16 @@
+{
+  "name": "wpforms-assistant-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudflare Worker proxy + cache for the WPForms Assistant Chrome extension.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
+    "typescript": "^5.4.0",
+    "wrangler": "^3.78.0"
+  }
+}

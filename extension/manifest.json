@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Assistant",
+  "version": "0.1.0",
+  "description": "AI assistant for WPForms — ask a question, get pointed at the answer.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://api.anthropic.com/*",
+    "https://*.workers.dev/*",
+    "http://localhost:8787/*",
+    "*://*/wp-admin/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/wp-admin/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_title": "Assistant — press Escape on a WPForms page to start"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/sullie.svg"],
+      "matches": ["*://*/*"]
+    }
+  ]
+}
